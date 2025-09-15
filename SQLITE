@@ -1,0 +1,27 @@
+CREATE TABLE Students (
+    students_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+INSERT INTO Students(name) VALUES ('Alice'), ('Mark');
+
+CREATE TABLE Courses(
+    course_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL
+);
+
+CREATE TABLE Enrollments (
+    enroll_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    students_id INTEGER,
+    course_id INTEGER,
+    FOREIGN KEY(students_id) REFERENCES Students(students_id),
+    FOREIGN KEY(course_id) REFERENCES Courses(course_id)
+);
+
+INSERT INTO Courses(title) VALUES ('Database'), ('COMPROG');
+
+INSERT INTO Enrollments(students_id, course_id) VALUES (1,1), (2,2);
+
+SELECT * FROM Students;
+SELECT * FROM Courses;
+SELECT * FROM Enrollments;
